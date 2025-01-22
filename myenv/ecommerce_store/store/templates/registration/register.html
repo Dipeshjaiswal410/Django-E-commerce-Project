@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="register-heading">Create Your Account</h2>
+<div class="form-container">
+    <form method="post" class="register-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ user_form.username.id_for_label }}">Username</label>
+            {{ user_form.username }}
+            {% for error in user_form.username.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ user_form.email.id_for_label }}">Email</label>
+            {{ user_form.email }}
+            {% for error in user_form.email.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ user_form.password.id_for_label }}">Password</label>
+            {{ user_form.password }}
+            {% for error in user_form.password.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ profile_form.address.id_for_label }}">Address</label>
+            {{ profile_form.address }}
+            {% for error in profile_form.address.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ profile_form.phone_number.id_for_label }}">Phone Number</label>
+            {{ profile_form.phone_number }}
+            {% for error in profile_form.phone_number.errors %}
+                <div class="error-message">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="submit-btn">Register</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-heading {
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 20px 0;
+        color: #0077cc;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    .form-group input:focus {
+        border-color: #0077cc;
+        outline: none;
+    }
+
+    .error-message {
+        color: #ff4d4d;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .submit-btn {
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        background-color: #0077cc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .submit-btn:hover {
+        background-color: #005fa3;
+    }
+</style>
+{% endblock %}

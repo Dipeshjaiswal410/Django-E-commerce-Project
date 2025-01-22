@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <h2 class="profile-heading">Your Profile</h2>
+    <div class="profile-info">
+        <p><strong>Address:</strong> {{ profile.address }}</p>
+        <p><strong>Phone:</strong> {{ profile.phone }}</p>
+    </div>
+    <div class="profile-actions">
+        <button class="edit-btn">Edit Profile</button>
+        <button class="logout-btn">Logout</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        color: #333;
+    }
+
+    .profile-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-heading {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #0077cc;
+        margin-bottom: 30px;
+    }
+
+    .profile-info {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .profile-info p {
+        margin: 12px 0;
+    }
+
+    .profile-info strong {
+        color: #0077cc;
+    }
+
+    .profile-actions {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .edit-btn,
+    .logout-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .edit-btn {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .edit-btn:hover {
+        background-color: #45a049;
+    }
+
+    .logout-btn {
+        background-color: #f44336;
+        color: white;
+    }
+
+    .logout-btn:hover {
+        background-color: #e53935;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Shopping Cart</h2>
+
+{% if cart.cartproduct_set.all %}
+    <ul>
+    {% for item in cart.cartproduct_set.all %}
+        <li>
+            {{ item.product.name }} - ${{ item.product.price }} x {{ item.quantity }}
+            <form action="{% url 'update_cart' item.product.id item.quantity|add:1 %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">+</button>
+            </form>
+            <form action="{% url 'update_cart' item.product.id item.quantity|add:-1 %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">-</button>
+            </form>
+            <form action="{% url 'remove_from_cart' item.product.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Remove</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h3>Total: ${{ cart.total_price }}</h3>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

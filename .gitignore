@@ -5,7 +5,10 @@ __pycache__/
 *.pyd
 
 # Virtual Environment
-myenv/
+myenv/Scripts/
+myenv/Lib/
+myenv/include/
+myenv/pyvenv.cfg
 
 # Django
 db.sqlite3
